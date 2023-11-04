@@ -21,22 +21,12 @@ class URLSessionHTTPClient {
 }
 
 class URLSessionHTTPClientTests: XCTestCase {
-
-    func test_getFromURL_createsDataTaskWithURL() {
-        let url = URL(string: "http://some-url.com")!
-        let task = FakeURLSessionDataTask()
-        let session = URLSessionSpy(with: task)
-
-        let sut = URLSessionHTTPClient(session)
-        sut.get(from:url)
-
-        XCTAssertEqual(session.requestedURLs, [url])
-    }
     
     func test_getFromURL_resumesDataTaskWithURL() {
         let url = URL(string: "http://some-url.com")!
         let task = URLSessionDataTaskSpy()
-        let session = URLSessionSpy(with: task)
+        let session = URLSessionSpy()
+        session.stub(url:url, dataTask:task)
 
         let sut = URLSessionHTTPClient(session)
         sut.get(from:url)
@@ -47,16 +37,14 @@ class URLSessionHTTPClientTests: XCTestCase {
     // MARK: - Helpers
 
     private class URLSessionSpy: URLSession {
-        var requestedURLs = [URL]()
-        private let dataTask: URLSessionDataTask
+        private var stubs = [URL : URLSessionDataTask]()
 
-        init(with dataTask:URLSessionDataTask) {
-            self.dataTask = dataTask
+        func stub(url: URL, dataTask: URLSessionDataTask) {
+            stubs[url] = dataTask
         }
 
         override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-            requestedURLs.append(url)
-            return dataTask
+            return stubs[url] ?? FakeURLSessionDataTask()
         }
     }
 
