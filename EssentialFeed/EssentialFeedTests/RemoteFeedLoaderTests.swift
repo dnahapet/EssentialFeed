@@ -10,7 +10,7 @@ import EssentialFeed
 
 class RemoteFeedLoaderTests: XCTestCase {
 
-    func test_init_doesnotRequestURL() {
+    func test_init_doesNotRequestURL() {
         let (client, _) = makeSUT()
 
         XCTAssert(client.requestedURLs.isEmpty)
@@ -33,6 +33,15 @@ class RemoteFeedLoaderTests: XCTestCase {
         sut.load() { _ in }
 
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+
+    func test_load_deliversErrorOnClientError() {
+        let (client, sut) = makeSUT()
+
+        expect(sut, toReceive: failure(.connectivity)) {
+            let anyError = NSError(domain: "Any Error", code: 1, userInfo: nil)
+            client.complete(with: anyError)
+        }
     }
 
     func test_load_deliversErrorOnClientNon200HTTPStatusCode() {
@@ -161,7 +170,7 @@ private class HTTPClientSpy: HTTPClient {
         messages.append((url, completion))
     }
 
-    func complete(with error: RemoteFeedLoader.Error, at index: Int = 0) {
+    func complete(with error: NSError, at index: Int = 0) {
         messages[index].completion(.failure(error))
     }
 
