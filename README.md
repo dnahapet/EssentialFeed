@@ -1,5 +1,7 @@
 ## Image Feed Feature Specs
 
+[![.github/workflows/CI.yml](https://github.com/dnahapet/EssentialFeed/actions/workflows/CI.yml/badge.svg)](https://github.com/dnahapet/EssentialFeed/actions/workflows/CI.yml)
+
 ### Story: Customer requests to see their image feed
 
 ### Narrative #1
