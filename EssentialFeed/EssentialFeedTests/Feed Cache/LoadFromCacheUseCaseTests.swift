@@ -15,20 +15,36 @@ class LocalFeedLoader {
     }
 
     func save(_ items: [FeedItem]) {
-        store.deleteCache()
+        store.deleteCache() { [unowned self] error in
+            if error == nil {
+                self.store.insert(items)
+            }
+        }
     }
 }
 
 class FeedStore {
-    var deletedCacheCallCount = 0
-    var insertedCacheCallCount = 0
+    typealias DeletionCompletion = (NSError?) -> Void
 
-    func deleteCache() {
+    var deletedCacheCallCount = 0
+    var insertCallCount = 0
+    var deletionCompletions: [DeletionCompletion] = []
+
+    func deleteCache(completion: @escaping DeletionCompletion) {
         deletedCacheCallCount += 1
+        deletionCompletions.append(completion)
+    }
+
+    func completeDeletion(with error: NSError, at index: Int = 0) {
+        deletionCompletions[index](error)
+    }
+
+    func completeDeletionSuccessfully(at index: Int = 0) {
+        deletionCompletions[index](nil)
     }
     
-    func completeDeletion(with error: NSError) {
-        
+    func insert(_ items: [FeedItem]) {
+        insertCallCount += 1
     }
 }
 
@@ -48,7 +64,7 @@ class LoadFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.deletedCacheCallCount, 1)
     }
 
-    func test_save_doesNotRequestCacheInsertionOnDeletionError() {
+    func test_save_doesNotRequestCacheInsertionOnStoreDeletionError() {
         let (sut, store) = makeSUT()
         let items = [uniqueItem()]
         let deletionError = anyNSError()
@@ -56,7 +72,17 @@ class LoadFromCacheUseCaseTests: XCTestCase {
         sut.save(items)
         store.completeDeletion(with: deletionError)
 
-        XCTAssertEqual(store.insertedCacheCallCount, 0)
+        XCTAssertEqual(store.insertCallCount, 0)
+    }
+
+    func test_save_requestsNewCacheInsertionOnSuccessfulDeletion() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem()]
+
+        sut.save(items)
+        store.completeDeletionSuccessfully()
+
+        XCTAssertEqual(store.insertCallCount, 1)
     }
 
     // MARK: - Helpers
