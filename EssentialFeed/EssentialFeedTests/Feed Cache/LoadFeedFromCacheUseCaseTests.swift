@@ -28,17 +28,28 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let expectedError = anyNSError()
 
-        expect(sut, completeWith: .failure(expectedError)) {
+        expect(sut, completeWith: .failure(expectedError), when: {
             store.completeRetrieval(with: expectedError)
-        }
+        })
     }
 
     func test_load_deliversNoImagesOnEmptyCache() {
         let (sut, store) = makeSUT()
 
-        expect(sut, completeWith: .success([])) {
+        expect(sut, completeWith: .success([]), when: {
             store.completeRetrievalWithEmptyCache()
-        }
+        })
+    }
+
+    func test_load_deliversCachedImagesOnLessThanSevenDaysOldCache() {
+        let fixedCurrentDate = Date()
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        let feed = uniqueFeed()
+        let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: 1)
+
+        expect(sut, completeWith: .success(feed.models), when: {
+            store.completeRetrieval(with: feed.localModels, timestamp: lessThanSevenDaysOldTimestamp)
+        })
     }
 
     // MARK: - Helpers
@@ -74,5 +85,29 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
 
     private func anyNSError() -> NSError {
         return NSError(domain: "Any Error", code: 1, userInfo: nil)
+    }
+
+    private func anyURL() -> URL {
+        return URL(string: "http://any-url.com")!
+    }
+
+    private func uniqueImage() -> FeedImage {
+        return FeedImage(id: UUID(), description: nil, location: nil, url: anyURL())
+    }
+
+    private func uniqueFeed() -> (models: [FeedImage], localModels: [LocalFeedImage]) {
+        let images = [uniqueImage(), uniqueImage()]
+        let localImages = images.map { LocalFeedImage(id: $0.id, description: $0.description, location: $0.location, url: $0.url) }
+        return (images, localImages)
+    }
+}
+
+private extension Date {
+    func adding(days: Int) -> Date {
+        return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
+    }
+
+    func adding(seconds: TimeInterval) -> Date {
+        return self + seconds
     }
 }
