@@ -8,34 +8,28 @@
 import Foundation
 
 private final class FeedCachePolicy {
-    let currentDate: () -> Date
     let calendar = Calendar(identifier: .gregorian)
-
-    init(currentDate: @escaping () -> Date) {
-        self.currentDate = currentDate
-    }
 
     private var maxCacheAgeInDays: Int {
         return 7
     }
 
-    func validateTimestamp(_ timestamp: Date) -> Bool {
+    func validateTimestamp(_ timestamp: Date, against date: Date) -> Bool {
         guard let maxCacheAge = calendar.date(byAdding: .day, value: maxCacheAgeInDays, to: timestamp) else {
             return false
         }
-        return currentDate() < maxCacheAge
+        return date < maxCacheAge
     }
 }
 
 public final class LocalFeedLoader {
     private let store: FeedStore
     private let currentDate: () -> Date
-    private let cachePolicy: FeedCachePolicy
+    private let cachePolicy = FeedCachePolicy()
 
     public init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
-        self.cachePolicy = FeedCachePolicy(currentDate: currentDate)
     }
 }
 
@@ -74,7 +68,7 @@ extension LocalFeedLoader: FeedLoader {
             case let .failure(error):
                 completion(.failure(error))
 
-            case let .found(localFeedImages, timestamp) where self.cachePolicy.validateTimestamp(timestamp):
+            case let .found(localFeedImages, timestamp) where self.cachePolicy.validateTimestamp(timestamp, against: self.currentDate()):
                 completion(.success(localFeedImages.toModels()))
 
             case .found, .empty:
@@ -93,7 +87,7 @@ extension LocalFeedLoader {
             case .failure:
                 self.store.deleteCache() { _ in }
 
-            case let .found(_, timestamp) where !self.cachePolicy.validateTimestamp(timestamp):
+            case let .found(_, timestamp) where !self.cachePolicy.validateTimestamp(timestamp, against: self.currentDate()):
                 self.store.deleteCache() { _ in }
 
             case .found, .empty:
