@@ -35,6 +35,14 @@ extension FeedStoreSpecs where Self: XCTestCase {
         expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
     }
 
+    func assertThatRetrieveDeliversFailureOnRetrievalError(on sut: FeedStore) {
+        expect(sut, toRetrieve: .failure(anyNSError()))
+    }
+
+    func assertThatRetrieveHasNoSideEffectsOnRetrievalError(on sut: FeedStore) {
+        expect(sut, toRetrieveTwice: .failure(anyNSError()))
+    }
+
     func assertThatInsertDeliversNoErrorOnEmptyCache(on sut: FeedStore) {
         let insertionError = insert((uniqueFeed().localModels, Date()), to: sut)
 
