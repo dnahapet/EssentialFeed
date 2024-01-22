@@ -72,7 +72,7 @@ public class CodableFeedStore: FeedStore {
                 completion(nil)
             }
             catch {
-                completion(error as NSError)
+                completion(error)
             }
         }
     }
@@ -89,7 +89,7 @@ public class CodableFeedStore: FeedStore {
                 completion(nil)
             }
             catch {
-                completion(error as NSError)
+                completion(error)
             }
         }
     }
