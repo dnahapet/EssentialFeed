@@ -15,7 +15,7 @@ extension ManagedCache {
     }
 
     @NSManaged public var timestamp: Date
-    @NSManaged public var feed: NSSet
+    @NSManaged public var feed: NSOrderedSet
 }
 
 // MARK: Generated accessors for feed

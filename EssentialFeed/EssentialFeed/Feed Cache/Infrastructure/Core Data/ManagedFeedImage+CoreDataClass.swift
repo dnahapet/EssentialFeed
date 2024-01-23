@@ -8,6 +8,7 @@
 
 import CoreData
 
+@objc(ManagedFeedImage)
 public class ManagedFeedImage: NSManagedObject {
 
 }

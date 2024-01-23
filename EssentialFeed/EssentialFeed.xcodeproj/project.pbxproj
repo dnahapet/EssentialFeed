@@ -141,8 +141,6 @@
 				1F06A4002B1E5787007C24C2 /* LocalFeedImage.swift */,
 				1F92841B2B2B65AD0003F64A /* FeedCachePolicy.swift */,
 				1F4AB27B2B5C3B380025FB6A /* CodableFeedStore.swift */,
-				1FE2B3242B5F0F9700897E08 /* FeedStore.xcdatamodeld */,
-				1FE2B3272B5F103100897E08 /* CoreDataFeedStore.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -272,6 +270,8 @@
 				1FE2B33A2B5F175F00897E08 /* ManagedFeedImage+CoreDataProperties.swift */,
 				1FE2B3352B5F173700897E08 /* ManagedCache+CoreDataClass.swift */,
 				1FE2B3362B5F173700897E08 /* ManagedCache+CoreDataProperties.swift */,
+				1FE2B3272B5F103100897E08 /* CoreDataFeedStore.swift */,
+				1FE2B3242B5F0F9700897E08 /* FeedStore.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
