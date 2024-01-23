@@ -10,6 +10,18 @@ import EssentialFeed
 
 class EssentialFeedCacheIntegrationTests: XCTestCase {
 
+    override func setUp() {
+        super.setUp()
+
+        setupEmptyStoreState()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+
+        undoStoreSideEffects()
+    }
+
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
 
@@ -18,9 +30,11 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
             switch result {
             case let .success(imageFeed):
                 XCTAssertEqual(imageFeed, [], "Expected empty feed")
+
             case let .failure(error):
                 XCTFail("Expected successful feed result, got \(error) instead")
             }
+
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5.0)
