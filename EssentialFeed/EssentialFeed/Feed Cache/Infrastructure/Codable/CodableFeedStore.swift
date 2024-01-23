@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CodableFeedStore: FeedStore {
+public final class CodableFeedStore: FeedStore {
     private struct Cache: Codable {
         let feed: [CodableFeedImage]
         let timestamp: Date
@@ -77,7 +77,7 @@ public class CodableFeedStore: FeedStore {
         }
     }
 
-    public func deleteCache(completion: @escaping DeletionCompletion) {
+    public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         let storeURL = self.storeURL
         queue.async(flags: .barrier) {
             guard FileManager.default.fileExists(atPath: storeURL.path) else {
