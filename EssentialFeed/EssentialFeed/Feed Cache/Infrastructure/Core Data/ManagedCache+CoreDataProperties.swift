@@ -16,7 +16,13 @@ extension ManagedCache {
 
     @NSManaged public var timestamp: Date
     @NSManaged public var feed: NSOrderedSet
-    
+
+    static func find(in context: NSManagedObjectContext) throws -> ManagedCache? {
+        let request = NSFetchRequest<ManagedCache>(entityName: entity().name!)
+        request.returnsObjectsAsFaults = false
+        return try context.fetch(request).first
+    }
+
     var localFeed: [LocalFeedImage] {
         return feed.compactMap { ($0 as? ManagedFeedImage)?.local }
     }
