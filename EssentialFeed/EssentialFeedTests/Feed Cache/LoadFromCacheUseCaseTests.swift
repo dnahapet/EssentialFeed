@@ -116,8 +116,10 @@ class LoadFromCacheUseCaseTests: XCTestCase {
     private func expect(_ sut: LocalFeedLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache save")
         var receivedError: Error?
-        sut.save(uniqueFeed().models) { error in
-            receivedError = error
+        sut.save(uniqueFeed().models) { saveResult in
+            if case let Result.failure(error) = saveResult {
+                receivedError = error
+            }
             exp.fulfill()
         }
 
