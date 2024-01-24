@@ -124,7 +124,8 @@ class LoadFromRemoteUseCaseTests: XCTestCase {
             "description": item.description,
             "location": item.location,
             "image": item.url.absoluteString
-        ]
+        ].compactMapValues { $0 }
+
         return (item, itemJSON as [String : Any])
     }
 
