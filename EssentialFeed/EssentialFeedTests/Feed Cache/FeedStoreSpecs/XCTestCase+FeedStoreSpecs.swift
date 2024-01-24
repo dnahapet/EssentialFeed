@@ -10,11 +10,11 @@ import XCTest
 
 extension FeedStoreSpecs where Self: XCTestCase {
     func assertThatRetrieveDeliversEmptyOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(.none))
     }
 
     func assertThatRetrieveTwiceHasNoSideEffectsOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieveTwice: .empty)
+        expect(sut, toRetrieveTwice: .success(.none))
     }
 
     func assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -23,7 +23,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
 
         insert((feed, timestamp), to: sut)
 
-        expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
 
     func assertThatRetrieveHasNoSideEffectsOnNonEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -32,7 +32,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
 
         insert((feed, timestamp), to: sut)
 
-        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieveTwice: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
 
     func assertThatInsertDeliversNoErrorOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -56,7 +56,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
         let latestTimestamp = Date()
         insert((latestFeed, latestTimestamp), to: sut)
 
-        expect(sut, toRetrieve: .found(feed: latestFeed, timestamp: latestTimestamp))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: latestFeed, timestamp: latestTimestamp)))
     }
 
     func assertThatDeleteDeliversNoErrorOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -68,7 +68,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
     func assertThatDeleteHasNoSideEffectsOnEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
         deleteCache(from: sut)
 
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(.none))
     }
 
     func assertThatDeleteDeliversNoErrorOnNonEmptyCache(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -84,7 +84,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
 
         deleteCache(from: sut)
 
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(.none))
     }
 
     func assertThatStoreSideEffectsRunSerially(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
@@ -114,26 +114,28 @@ extension FeedStoreSpecs where Self: XCTestCase {
     @discardableResult
     func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for cache insertion completion")
-        var error: Error? = nil
-        sut.insert(cache.feed, cache.timestamp) { insertionError in
-            error = insertionError
+        var receivedError: Error? = nil
+        sut.insert(cache.feed, cache.timestamp) { insertionResult in
+            if case let Result.failure(error) = insertionResult {
+                receivedError = error
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
-        return error
+        return receivedError
     }
 
-    func expect(_ sut: FeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: FeedStore, toRetrieve expectedResult: FeedStore.RetrievalResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache retrieval completion")
 
         sut.retrieve { actualResult in
             switch (actualResult, expectedResult) {
-            case (.empty, .empty),
+            case (.success(.none), .success(.none)),
                 (.failure, .failure):
                 break
-            case let (.found(actualFeed, actualTimestamp), .found(expectedFeed, expectedTimestamp)):
-                XCTAssertEqual(actualFeed, expectedFeed, file: file, line: line)
-                XCTAssertEqual(actualTimestamp, expectedTimestamp, file: file, line: line)
+            case let (.success(.some(actualCache)), .success(.some(expectedCache))):
+                XCTAssertEqual(actualCache.feed, expectedCache.feed, file: file, line: line)
+                XCTAssertEqual(actualCache.timestamp, expectedCache.timestamp, file: file, line: line)
             default:
                 XCTFail("Expected to retrieve \(expectedResult) and \(actualResult) instead")
             }
@@ -142,7 +144,7 @@ extension FeedStoreSpecs where Self: XCTestCase {
         wait(for: [exp], timeout: 5.0)
     }
 
-    func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: FeedStore.RetrievalResult, file: StaticString = #file, line: UInt = #line) {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
@@ -150,12 +152,14 @@ extension FeedStoreSpecs where Self: XCTestCase {
     @discardableResult
     func deleteCache(from sut: FeedStore, file: StaticString = #file, line: UInt = #line) -> Error? {
         let exp = expectation(description: "Wait for cache deletion completion")
-        var error: Error? = nil
-        sut.deleteCachedFeed { deletionError in
-            error = deletionError
+        var receivedError: Error? = nil
+        sut.deleteCachedFeed { deletionResult in
+            if case let Result.failure(error) = deletionResult {
+                receivedError = error
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5.0)
-        return error
+        return receivedError
     }
 }
