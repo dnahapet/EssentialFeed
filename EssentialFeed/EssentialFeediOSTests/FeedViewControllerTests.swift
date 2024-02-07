@@ -81,13 +81,13 @@ class FeedViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         loader.completeFeedLoading(with: [image0, image1])
 
-        XCTAssertEqual(loader.loadImageURLs, [], "Expected no image URL requests until views become visible")
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
 
         sut.simulateFeedImageViewVisible(at: 0)
-        XCTAssertEqual(loader.loadImageURLs, [image0.url], "Expected first image URL request once first view become visible")
+        XCTAssertEqual(loader.loadedImageURLs, [image0.url], "Expected first image URL request once first view become visible")
 
         sut.simulateFeedImageViewVisible(at: 1)
-        XCTAssertEqual(loader.loadImageURLs, [image0.url, image1.url], "Expected second image URL request once second view also become visible")
+        XCTAssertEqual(loader.loadedImageURLs, [image0.url, image1.url], "Expected second image URL request once second view also become visible")
     }
 
     func test_feedImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
@@ -166,15 +166,19 @@ class FeedViewControllerTests: XCTestCase {
 
         // MARK: FeedImageDataLoader
 
-        private(set) var loadImageURLs = [URL]()
+        private(set) var loadedImageURLs = [URL]()
         private(set) var canceledImageURLs = [URL]()
 
-        func loadImageData(from url: URL) {
-            loadImageURLs.append(url)
+        private struct TaskSpy: FeedImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
         }
 
-        func cancelImageDataLoad(from url: URL) {
-            canceledImageURLs.append(url)
+        func loadImageData(from url: URL) -> FeedImageDataLoaderTask {
+            loadedImageURLs.append(url)
+            return TaskSpy { [weak self] in self?.canceledImageURLs.append(url) }
         }
     }
 }
