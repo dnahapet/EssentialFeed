@@ -77,6 +77,9 @@
                                                             <buttonConfiguration key="configuration" style="plain" title="⎋">
                                                                 <color key="baseForegroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="Khg-Z3-zxX" eventType="touchUpInside" id="xag-yW-rE0"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,6 +121,14 @@
                                         <constraint firstItem="bw4-TN-AV5" firstAttribute="top" secondItem="4d3-3s-rjQ" secondAttribute="topMargin" priority="999" constant="6" id="xLi-ei-Yjs"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="6Ce-bf-OGC" id="YhG-3d-khr"/>
+                                    <outlet property="feedImageContainer" destination="lMu-4o-93O" id="fZK-me-gYP"/>
+                                    <outlet property="feedImageRetryButton" destination="GpD-q2-axL" id="544-Iq-8Ro"/>
+                                    <outlet property="feedImageView" destination="jPq-eP-Lyw" id="Gbg-r7-3Ax"/>
+                                    <outlet property="locationContainer" destination="fP7-uf-2Jw" id="8Ro-Tc-zpw"/>
+                                    <outlet property="locationLabel" destination="goD-3p-T4j" id="oDL-9N-Z9u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
