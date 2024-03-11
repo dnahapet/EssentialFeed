@@ -18,7 +18,24 @@
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2S3-De-Gcs" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLb-7k-Kyu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="CLb-7k-Kyu" secondAttribute="trailing" id="RI8-Oc-bye"/>
+                                <constraint firstItem="CLb-7k-Kyu" firstAttribute="leading" secondItem="2S3-De-Gcs" secondAttribute="leading" id="lvq-X2-kqA"/>
+                                <constraint firstAttribute="bottom" secondItem="CLb-7k-Kyu" secondAttribute="bottom" id="tM8-O7-ATs"/>
+                                <constraint firstItem="CLb-7k-Kyu" firstAttribute="top" secondItem="2S3-De-Gcs" secondAttribute="top" id="v4E-FJ-QQn"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="CLb-7k-Kyu" id="UL6-IW-TUi"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="D2X-bC-wo2">
                             <rect key="frame" x="0.0" y="663" width="414" height="16"/>
