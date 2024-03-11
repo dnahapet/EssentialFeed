@@ -166,6 +166,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERo-Ql-ayW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XOj-Wn-PGj">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="2S3-De-Gcs" id="Jst-jO-PGF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="744.92753623188412" y="34.821428571428569"/>
         </scene>
