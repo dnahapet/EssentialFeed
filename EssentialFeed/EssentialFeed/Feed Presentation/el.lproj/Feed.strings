@@ -1,0 +1,10 @@
+/* 
+  Feed.strings
+  EssentialFeed
+
+  Created by Davit Nahapetyan on 2024-03-11.
+  
+*/
+
+"FEED_VIEW_TITLE" = "To Feed nou";
+"FEED_VIEW_CONNECTION_ERROR" = "Δεν ήταν δυνατή η σύνδεση στο διακομιστή";
