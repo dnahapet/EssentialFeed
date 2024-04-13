@@ -35,15 +35,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
         window?.rootViewController = FeedUIComposer.feedComposedWith(
             feedLoader: FeedLoaderWithFallbackComposite(
-                primary: FeedLoaderCacheDecorator(
-                    decoratee: remoteFeedLoader,
-                    cache: localFeedLoader),
+                primary: remoteFeedLoader,
                 fallback: localFeedLoader),
             imageLoader: FeedImageDataLoaderWithFallbackComposite(
                 primary: localImageLoader,
-                fallback: FeedImageDataLoaderCacheDecorator(
-                    decoratee: remoteImageLoader,
-                    cache: localImageLoader)))
+                fallback: remoteImageLoader))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
