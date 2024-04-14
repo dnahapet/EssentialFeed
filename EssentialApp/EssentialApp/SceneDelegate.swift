@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let localStoreURL = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("feed-store.sqlite")
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -23,13 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
         
-        let remoteClient = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        let remoteClient = makeRemoteClient()
         let remoteFeedLoader = RemoteFeedLoader(client: remoteClient, url: remoteURL)
         let remoteImageLoader = RemoteFeedImageDataLoader(client: remoteClient)
         
-        let localStoreUrl = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("feed-store.sqlite")
-        
-        let localStore = try! CoreDataFeedStore(storeURL: localStoreUrl)
+        let localStore = try! CoreDataFeedStore(storeURL: localStoreURL)
         let localFeedLoader = LocalFeedLoader(store: localStore, currentDate: Date.init)
         let localImageLoader = LocalFeedImageDataLoader(store: localStore)
                 
@@ -44,6 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 fallback: FeedImageDataLoaderCacheDecorator(
                     decoratee: remoteImageLoader,
                     cache: localImageLoader)))
+    }
+    
+    func makeRemoteClient() -> HTTPClient {
+        return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -73,7 +76,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
