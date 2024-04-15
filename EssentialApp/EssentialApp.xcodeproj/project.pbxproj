@@ -46,6 +46,7 @@
 		1FFF3A112BCD6DE200176AD2 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A102BCD6DE100176AD2 /* FeedUIIntegrationTests.swift */; };
 		1FFF3A132BCD736D00176AD2 /* FeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A122BCD736D00176AD2 /* FeedAcceptanceTests.swift */; };
 		1FFF3A152BCD81F700176AD2 /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A142BCD81F700176AD2 /* HTTPClientStub.swift */; };
+		1FFF3A172BCD826200176AD2 /* InMemoryFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A162BCD826200176AD2 /* InMemoryFeedStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		1FFF3A102BCD6DE100176AD2 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		1FFF3A122BCD736D00176AD2 /* FeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAcceptanceTests.swift; sourceTree = "<group>"; };
 		1FFF3A142BCD81F700176AD2 /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
+		1FFF3A162BCD826200176AD2 /* InMemoryFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				1F78200E2BC9ED6200EA712A /* FeedImageDataLoaderSpy.swift */,
 				1F7820102BC9EE0000EA712A /* XCTestCase+FeedImageDataLoader.swift */,
 				1FFF3A142BCD81F700176AD2 /* HTTPClientStub.swift */,
+				1FFF3A162BCD826200176AD2 /* InMemoryFeedStore.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				1FFF3A152BCD81F700176AD2 /* HTTPClientStub.swift in Sources */,
 				1FFF3A0B2BCD6DC900176AD2 /* FeedViewControllerTests+Localization.swift in Sources */,
 				1FFF3A0F2BCD6DC900176AD2 /* FeedViewControllerTests+Assertions.swift in Sources */,
+				1FFF3A172BCD826200176AD2 /* InMemoryFeedStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
