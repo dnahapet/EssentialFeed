@@ -7,40 +7,41 @@
 
 import Foundation
 
-public final class RemoteImageCommentsLoader: FeedLoader {
-    var httpClient: HTTPClient
-    var httpURL: URL
-
+public final class RemoteImageCommentsLoader {
+    private let url: URL
+    private let client: HTTPClient
+    
     public enum Error: Swift.Error {
         case connectivity
         case invalidData
     }
-
-    public typealias Result = FeedLoader.Result
-
-    public init(client: HTTPClient, url: URL) {
-        httpClient = client
-        httpURL = url
+    
+    public typealias Result = Swift.Result<[ImageComment], Swift.Error>
+    
+    public init(url: URL, client: HTTPClient) {
+        self.url = url
+        self.client = client
     }
-
-    public func load(completion: @escaping ((Result) -> Void)) {
-        httpClient.get(from: httpURL) { [weak self] result in
+    
+    public func load(completion: @escaping (Result) -> Void) {
+        client.get(from: url) { [weak self] result in
             guard self != nil else { return }
+            
             switch result {
-            case .success((let data, let response)):
+            case let .success((data, response)):
                 completion(RemoteImageCommentsLoader.map(data, from: response))
-            case.failure:
-                completion(.failure(RemoteImageCommentsLoader.Error.connectivity))
+                
+            case .failure:
+                completion(.failure(Error.connectivity))
             }
         }
     }
-
+    
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
-            let items = try ImageCommentsMapper.map(data, from:response)
-            return .success(items.toModels())
-        }
-        catch {
+            let items = try ImageCommentsMapper.map(data, from: response)
+            return .success(items)
+        } catch {
             return .failure(error)
         }
     }
