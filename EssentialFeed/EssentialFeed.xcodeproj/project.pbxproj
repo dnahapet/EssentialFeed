@@ -378,6 +378,23 @@
 			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
+		1F09611E2BD9C7C8000D6000 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				1F9E152E2BD9AD5C008CD595 /* RemoteImageCommentsLoader.swift */,
+				1F9E15302BD9ADDC008CD595 /* ImageCommentsMapper.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		1F09611F2BD9C81D000D6000 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				1F9E152C2BD9ABC1008CD595 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
 		1F0FA8D92BC1C6EF00D2569F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +451,7 @@
 				1F09611A2BD9C6C6000D6000 /* Shared API Infra */,
 				1F0961192BD9C6B7000D6000 /* Shared API */,
 				1F9E15322BD9B439008CD595 /* Image Comments Feature */,
+				1F09611E2BD9C7C8000D6000 /* Image Comments API */,
 				1F884CBD2B9FB9B000AA21E0 /* Feed Presentation */,
 				1F06E1B22B190B47003C1C18 /* Feed Cache */,
 				1FD6E2092AE5750700A75A41 /* Feed API */,
@@ -459,7 +477,6 @@
 			children = (
 				1FE59C492AE34B5200213CD9 /* LoadFromRemoteUseCaseTests.swift */,
 				1F0FA8D72BC1B69900D2569F /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				1F9E152C2BD9ABC1008CD595 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -577,8 +594,6 @@
 				1F86FF4B2AEC6CC9006CC923 /* FeedItemsMapper.swift */,
 				1F06A3FE2B1E572D007C24C2 /* RemoteFeedItem.swift */,
 				1F0FA8DC2BC1C89B00D2569F /* RemoteFeedImageDataLoader.swift */,
-				1F9E152E2BD9AD5C008CD595 /* RemoteImageCommentsLoader.swift */,
-				1F9E15302BD9ADDC008CD595 /* ImageCommentsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -594,6 +609,7 @@
 		1FDEE7AA2AE2082F00DD84B2 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				1F09611F2BD9C81D000D6000 /* Image Comments API */,
 				1F09611D2BD9C728000D6000 /* Shared API Infra */,
 				1F09611B2BD9C716000D6000 /* Shared API */,
 				1F2B423B2B179FC2001D26F2 /* Feed Cache */,
