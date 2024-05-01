@@ -52,7 +52,10 @@ extension FeedUIIntegrationTests {
 
         func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
             imageRequests.append((url, completion))
-            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+            return TaskSpy { [weak self] in
+                guard self != nil else { return }
+                self?.cancelledImageURLs.append(url)
+            }
         }
 
         func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
