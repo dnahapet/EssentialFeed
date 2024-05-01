@@ -26,7 +26,7 @@
 		1FFF3A042BCD6DA600176AD2 /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39FB2BCD6DA500176AD2 /* FeedViewAdapter.swift */; };
 		1FFF3A052BCD6DA600176AD2 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39FD2BCD6DA600176AD2 /* FeedImageDataLoaderPresentationAdapter.swift */; };
 		1FFF3A0B2BCD6DC900176AD2 /* FeedViewControllerTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A0A2BCD6DC800176AD2 /* FeedViewControllerTests+Localization.swift */; };
-		1FFF3A0C2BCD6DC900176AD2 /* FeedViewControllerTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A082BCD6DC800176AD2 /* FeedViewControllerTests+LoaderSpy.swift */; };
+		1FFF3A0C2BCD6DC900176AD2 /* FeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A082BCD6DC800176AD2 /* FeedUIIntegrationTests+LoaderSpy.swift */; };
 		1FFF3A0D2BCD6DC900176AD2 /* FeedImageCell+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A062BCD6DC800176AD2 /* FeedImageCell+Helpers.swift */; };
 		1FFF3A0E2BCD6DC900176AD2 /* FeedViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A072BCD6DC800176AD2 /* FeedViewController+Helpers.swift */; };
 		1FFF3A0F2BCD6DC900176AD2 /* FeedViewControllerTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF3A092BCD6DC800176AD2 /* FeedViewControllerTests+Assertions.swift */; };
@@ -83,7 +83,7 @@
 		1FFF39FF2BCD6DA600176AD2 /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		1FFF3A062BCD6DC800176AD2 /* FeedImageCell+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedImageCell+Helpers.swift"; sourceTree = "<group>"; };
 		1FFF3A072BCD6DC800176AD2 /* FeedViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+Helpers.swift"; sourceTree = "<group>"; };
-		1FFF3A082BCD6DC800176AD2 /* FeedViewControllerTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+LoaderSpy.swift"; sourceTree = "<group>"; };
+		1FFF3A082BCD6DC800176AD2 /* FeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		1FFF3A092BCD6DC800176AD2 /* FeedViewControllerTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Assertions.swift"; sourceTree = "<group>"; };
 		1FFF3A0A2BCD6DC800176AD2 /* FeedViewControllerTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewControllerTests+Localization.swift"; sourceTree = "<group>"; };
 		1FFF3A102BCD6DE100176AD2 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 				1FFF3A0A2BCD6DC800176AD2 /* FeedViewControllerTests+Localization.swift */,
 				1FFF3A072BCD6DC800176AD2 /* FeedViewController+Helpers.swift */,
 				1FFF3A062BCD6DC800176AD2 /* FeedImageCell+Helpers.swift */,
-				1FFF3A082BCD6DC800176AD2 /* FeedViewControllerTests+LoaderSpy.swift */,
+				1FFF3A082BCD6DC800176AD2 /* FeedUIIntegrationTests+LoaderSpy.swift */,
 				1FFF3A092BCD6DC800176AD2 /* FeedViewControllerTests+Assertions.swift */,
 				1F3D22712BC8A36D00F4139B /* XCTestCase+MemoryLeakTracking.swift */,
 				1F3D22732BC8A40C00F4139B /* SharedTestHelpers.swift */,
@@ -304,7 +304,7 @@
 			files = (
 				1F3D22742BC8A40C00F4139B /* SharedTestHelpers.swift in Sources */,
 				1FA981542BD19F0700EB701E /* UIView+TestHelpers.swift in Sources */,
-				1FFF3A0C2BCD6DC900176AD2 /* FeedViewControllerTests+LoaderSpy.swift in Sources */,
+				1FFF3A0C2BCD6DC900176AD2 /* FeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				1FFF3A0D2BCD6DC900176AD2 /* FeedImageCell+Helpers.swift in Sources */,
 				1FFF3A132BCD736D00176AD2 /* FeedAcceptanceTests.swift in Sources */,
 				1FFF39F92BCD68C200176AD2 /* SceneDelegateTests.swift in Sources */,
