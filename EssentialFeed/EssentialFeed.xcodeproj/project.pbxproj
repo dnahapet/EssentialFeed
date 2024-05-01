@@ -399,8 +399,8 @@
 		1F0AE3442BE2FD9000759119 /* Image Comments Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1F0AE3502BE2FF1D00759119 /* ImageComments.strings */,
 				1F0AE3472BE2FDD400759119 /* ImageCommentsPresenter.swift */,
+				1F0AE3502BE2FF1D00759119 /* ImageComments.strings */,
 			);
 			path = "Image Comments Presentation";
 			sourceTree = "<group>";
