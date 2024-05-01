@@ -1,5 +1,5 @@
 //
-//  FeedViewControllerTests+LoaderSpy.swift
+//  FeedUIIntegrationTests+LoaderSpy.swift
 //  EssentialFeediOSTests
 //
 //  Created by Davit Nahapetyan on 2024-02-26.
@@ -41,7 +41,7 @@ extension FeedUIIntegrationTests {
             return imageRequests.map { $0.url }
         }
 
-        private(set) var canceledImageURLs = [URL]()
+        private(set) var cancelledImageURLs = [URL]()
 
         private struct TaskSpy: FeedImageDataLoaderTask {
             let cancelCallback: () -> Void
@@ -52,7 +52,9 @@ extension FeedUIIntegrationTests {
 
         func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
             imageRequests.append((url, completion))
-            return TaskSpy { [weak self] in self?.canceledImageURLs.append(url) }
+            return TaskSpy { [weak self] in
+                self?.cancelledImageURLs.append(url)
+            }
         }
 
         func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
