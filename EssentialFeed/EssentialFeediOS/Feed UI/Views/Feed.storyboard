@@ -33,10 +33,10 @@
                                             <rect key="frame" x="20" y="17" width="374" height="546"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fP7-uf-2Jw" userLabel="Location Container">
-                                                    <rect key="frame" x="0.0" y="0.0" width="266.5" height="37"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="266.5" height="40"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MR6-YL-3c5" userLabel="Pin Container">
-                                                            <rect key="frame" x="0.0" y="0.0" width="10" height="37"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="10" height="40"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="t4m-NY-3sQ">
                                                                     <rect key="frame" x="0.0" y="3" width="14" height="14"/>
@@ -53,16 +53,16 @@
                                                                 <constraint firstItem="t4m-NY-3sQ" firstAttribute="leading" secondItem="MR6-YL-3c5" secondAttribute="leading" id="k0P-9E-muh"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Location Location Location Location Location Location Location Location Location " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goD-3p-T4j">
-                                                            <rect key="frame" x="16" y="0.0" width="250.5" height="36"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Location Location Location Location Location Location Location Location Location " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goD-3p-T4j">
+                                                            <rect key="frame" x="16" y="0.0" width="250.5" height="30.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMu-4o-93O" userLabel="Image Container">
-                                                    <rect key="frame" x="0.0" y="47" width="374" height="374"/>
+                                                    <rect key="frame" x="0.0" y="50" width="374" height="374"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-eP-Lyw">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
@@ -98,10 +98,10 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ce-bf-OGC">
-                                                    <rect key="frame" x="0.0" y="431" width="373" height="115"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ce-bf-OGC">
+                                                    <rect key="frame" x="0.0" y="434" width="372" height="112"/>
                                                     <string key="text">Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description </string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
