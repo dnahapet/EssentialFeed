@@ -8,35 +8,6 @@
 import UIKit
 import EssentialFeed
 
-public class LoadMoreCell: UITableViewCell {
-    
-    private lazy var spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .medium)
-                
-        contentView.addSubview(spinner)
-        
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            spinner.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
-
-        return spinner
-    }()
-    
-    public var isLoading: Bool {
-        get { spinner.isAnimating }
-        set {
-            if newValue {
-                spinner.startAnimating()
-            }
-            else {
-                spinner.stopAnimating()
-            }
-        }
-    }
-}
-
 public class LoadMoreCellController: NSObject, UITableViewDataSource {
     private let cell = LoadMoreCell()
     
@@ -49,9 +20,13 @@ public class LoadMoreCellController: NSObject, UITableViewDataSource {
     }
 }
 
-extension LoadMoreCellController: ResourceLoadingView {
+extension LoadMoreCellController: ResourceLoadingView, ResourceErrorView {
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
         cell.isLoading = viewModel.isLoading
+    }
+    
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        cell.message = viewModel.message
     }
 }
