@@ -20,7 +20,7 @@ class FeedSnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
     }
-        
+    
     func test_feedWithFailedImageLoading() {
         let sut = makeSUT()
         
@@ -39,14 +39,14 @@ class FeedSnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
     }
     
-    func test_feedWithLoadMoreMessage() {
+    func test_feedWithLoadMoreError() {
         let sut = makeSUT()
         
-        sut.display(feedWithLoadMoreMessage())
+        sut.display(feedWithLoadMoreError())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_MESSAGE_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_MESSAGE_dark")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_MESSAGE_light_extraExtraExtraLarge")
+        record(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_ERROR_light")
+        record(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_ERROR_dark")
+        record(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_extraExtraExtraLarge")
     }
     
     // MARK: - Helpers
@@ -97,9 +97,9 @@ class FeedSnapshotTests: XCTestCase {
         return feedWith(loadMore: loadMore)
     }
     
-    private func feedWithLoadMoreMessage() -> [CellController] {
+    private func feedWithLoadMoreError() -> [CellController] {
         let loadMore = LoadMoreCellController(callback: {})
-        loadMore.display(ResourceErrorViewModel(message: "This is a multiline\n error message"))
+        loadMore.display(ResourceErrorViewModel(message: "This is a multiline\nerror message"))
         return feedWith(loadMore: loadMore)
     }
     
@@ -113,6 +113,7 @@ class FeedSnapshotTests: XCTestCase {
             CellController(id: UUID(), loadMore)
         ]
     }
+    
 }
 
 private extension ListViewController {
