@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F11A9DF2BF7F240004C0B74 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11A9DE2BF7F240004C0B74 /* NullStore.swift */; };
 		1F22EF112BC3615B003C00EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22EF102BC3615B003C00EF /* AppDelegate.swift */; };
 		1F22EF132BC3615B003C00EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22EF122BC3615B003C00EF /* SceneDelegate.swift */; };
 		1F22EF1A2BC3615E003C00EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F22EF192BC3615E003C00EF /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F11A9DE2BF7F240004C0B74 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		1F22EF0D2BC3615B003C00EF /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F22EF102BC3615B003C00EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F22EF122BC3615B003C00EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				1F22EF102BC3615B003C00EF /* AppDelegate.swift */,
 				1F22EF122BC3615B003C00EF /* SceneDelegate.swift */,
 				1FFF39FE2BCD6DA600176AD2 /* FeedUIComposer.swift */,
+				1F11A9DE2BF7F240004C0B74 /* NullStore.swift */,
 				1FB9A13C2BE975AB0037F0ED /* CommentsUIComposer.swift */,
 				1FFF39FF2BCD6DA600176AD2 /* WeakRefVirtualProxy.swift */,
 				1FFF39FB2BCD6DA500176AD2 /* FeedViewAdapter.swift */,
@@ -290,6 +293,7 @@
 				1FFF3A032BCD6DA600176AD2 /* FeedUIComposer.swift in Sources */,
 				1F22EF112BC3615B003C00EF /* AppDelegate.swift in Sources */,
 				1F22EF132BC3615B003C00EF /* SceneDelegate.swift in Sources */,
+				1F11A9DF2BF7F240004C0B74 /* NullStore.swift in Sources */,
 				1FFF3A012BCD6DA600176AD2 /* LoadResourcePresentationAdapter.swift in Sources */,
 				1FFF3A002BCD6DA600176AD2 /* WeakRefVirtualProxy.swift in Sources */,
 				1FFF3A042BCD6DA600176AD2 /* FeedViewAdapter.swift in Sources */,
