@@ -19,7 +19,7 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
 
-        assertThatRetrieveTwiceHasNoSideEffectsOnEmptyCache(on: sut)
+        assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
     }
 
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
@@ -74,12 +74,6 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let sut = makeSUT()
 
         assertThatDeleteEmptiesPreviouslyInsertedCache(on: sut)
-    }
-
-    func test_storeSideEffects_runSerially() {
-        let sut = makeSUT()
-
-        assertThatStoreSideEffectsRunSerially(on: sut)
     }
 
     // MARK: - Helpers
