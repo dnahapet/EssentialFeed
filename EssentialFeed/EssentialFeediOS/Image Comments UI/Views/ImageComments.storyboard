@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xMc-WJ-52m">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--List View Controller-->
+        <scene sceneID="UOq-qE-1p8">
+            <objects>
+                <tableViewController id="xMc-WJ-52m" customClass="ListViewController" customModule="EssentialFeediOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="iBd-HY-65Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="D2X-bC-wo2">
+                            <rect key="frame" x="0.0" y="223" width="414" height="299"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCommentCell" rowHeight="156" id="Khg-Z3-zxX" customClass="ImageCommentCell" customModule="EssentialFeediOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="156"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Khg-Z3-zxX" id="4d3-3s-rjQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="156"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X7c-A7-Ceh">
+                                            <rect key="frame" x="20" y="11" width="374" height="134"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Rq-27-3MN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAI-0S-ld6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="67" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-0X-QDG">
+                                                            <rect key="frame" x="75" y="0.0" width="299" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment comment comment comment comment comment comment comment comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfX-z4-ZSV">
+                                                    <rect key="frame" x="0.0" y="25" width="322.5" height="109"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="6Rq-27-3MN" secondAttribute="trailing" id="fUe-SS-sRy"/>
+                                                <constraint firstItem="6Rq-27-3MN" firstAttribute="leading" secondItem="X7c-A7-Ceh" secondAttribute="leading" id="syo-Yh-XpH"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="X7c-A7-Ceh" firstAttribute="top" secondItem="4d3-3s-rjQ" secondAttribute="topMargin" id="3Q3-6S-TfF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="X7c-A7-Ceh" secondAttribute="bottom" id="9ff-H8-MPa"/>
+                                        <constraint firstItem="X7c-A7-Ceh" firstAttribute="leading" secondItem="4d3-3s-rjQ" secondAttribute="leadingMargin" id="fhm-t2-1b0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="X7c-A7-Ceh" secondAttribute="trailing" id="w6H-EF-wWG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="8B8-0X-QDG" id="f2O-rk-Yrx"/>
+                                    <outlet property="messageLabel" destination="RfX-z4-ZSV" id="GCE-q2-UHR"/>
+                                    <outlet property="usernameLabel" destination="aAI-0S-ld6" id="LeL-HZ-2CE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xMc-WJ-52m" id="3ww-nl-Yf6"/>
+                            <outlet property="delegate" destination="xMc-WJ-52m" id="DtO-ql-rxp"/>
+                            <outlet property="prefetchDataSource" destination="xMc-WJ-52m" id="ifB-KP-rxD"/>
+                        </connections>
+                    </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="k3i-A8-ZvY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="xMc-WJ-52m" eventType="valueChanged" id="50V-cM-yT2"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERo-Ql-ayW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XOj-Wn-PGj"/>
+            </objects>
+            <point key="canvasLocation" x="744.92753623188412" y="34.821428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

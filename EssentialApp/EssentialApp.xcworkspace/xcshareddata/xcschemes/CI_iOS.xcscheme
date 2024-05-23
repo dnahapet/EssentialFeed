@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1300"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1F22A0BC2ADF3858000207A1"
+               BuildableName = "EssentialFeed.framework"
+               BlueprintName = "EssentialFeed"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      enableThreadSanitizer = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1F22A0BC2ADF3858000207A1"
+            BuildableName = "EssentialFeed.framework"
+            BlueprintName = "EssentialFeed"
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1F8FE2502B684DC7002136E8"
+            BuildableName = "EssentialFeediOS.framework"
+            BlueprintName = "EssentialFeediOS"
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1F22EF0C2BC3615B003C00EF"
+            BuildableName = "EssentialApp.app"
+            BlueprintName = "EssentialApp"
+            ReferencedContainer = "container:EssentialApp.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1FE17A262AF95320007CA744"
+               BuildableName = "EssentialFeedAPIEndToEndTests.xctest"
+               BlueprintName = "EssentialFeedAPIEndToEndTests"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1FDEE7A82AE2082F00DD84B2"
+               BuildableName = "EssentialFeedTests.xctest"
+               BlueprintName = "EssentialFeedTests"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1F53EEDB2B605C5C00BA1056"
+               BuildableName = "EssentialFeedCacheIntegrationTests.xctest"
+               BlueprintName = "EssentialFeedCacheIntegrationTests"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1F8FE2572B684DC7002136E8"
+               BuildableName = "EssentialFeediOSTests.xctest"
+               BlueprintName = "EssentialFeediOSTests"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1F9983112BC883CD00A83073"
+               BuildableName = "EssentialAppTests.xctest"
+               BlueprintName = "EssentialAppTests"
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1F22A0BC2ADF3858000207A1"
+            BuildableName = "EssentialFeed.framework"
+            BlueprintName = "EssentialFeed"
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
